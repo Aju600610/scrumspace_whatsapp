@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScrumSpace CoWorks | Reclaim Your Focus — Trivandrum</title>
+    <meta name="description" content="Stop fighting power cuts and utility stress. ScrumSpace CoWorks offers 40 quiet, air-conditioned seats with 24/7 backup power and enterprise Wi-Fi in Arikkadamukku, Trivandrum. 1-Week Free Trial. Only 1-month advance + ₹700 registration.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #03050c;
+            --glass: rgba(255, 255, 255, 0.045);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --emerald: #34d399;
+            --teal: #2dd4bf;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Living background */
+        .bg-mesh {
+            position: fixed; inset: 0; z-index: -3;
+            background:
+                radial-gradient(ellipse 90% 60% at 10% -10%, rgba(52, 211, 153, 0.14), transparent 50%),
+                radial-gradient(ellipse 70% 50% at 90% 5%, rgba(99, 102, 241, 0.1), transparent 45%),
+                radial-gradient(ellipse 60% 40% at 50% 110%, rgba(45, 212, 191, 0.08), transparent 40%),
+                var(--bg);
+        }
+        .orb {
+            position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.35; z-index: -2; pointer-events: none;
+            animation: orb-drift 18s ease-in-out infinite alternate;
+        }
+        .orb-1 { width: 420px; height: 420px; background: #34d399; top: -80px; left: -100px; }
+        .orb-2 { width: 360px; height: 360px; background: #6366f1; top: 40%; right: -120px; animation-delay: -6s; }
+        .orb-3 { width: 300px; height: 300px; background: #2dd4bf; bottom: -60px; left: 30%; animation-delay: -12s; }
+        @keyframes orb-drift {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, 30px) scale(1.08); }
+        }
+
+        .particles { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+        .particle {
+            position: absolute; width: 2px; height: 2px; background: rgba(52, 211, 153, 0.5);
+            border-radius: 50%; animation: float-up linear infinite;
+        }
+        @keyframes float-up {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-5vh) scale(1); opacity: 0; }
+        }
+
+        .grain {
+            position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        /* Glass */
+        .glass {
+            background: var(--glass);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass:hover {
+            border-color: rgba(52, 211, 153, 0.25);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(52, 211, 153, 0.08);
+            transform: translateY(-6px);
+        }
+        .glass-strong {
+            background: linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
+            backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 28px;
+        }
+
+        .font-serif { font-family: 'Instrument Serif', Georgia, serif; }
+
+        /* Animations */
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(36px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.35); }
+            70% { box-shadow: 0 0 0 12px rgba(52, 211, 153, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+        }
+        .animate-fade-up { animation: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .delay-1 { animation-delay: 0.12s; }
+        .delay-2 { animation-delay: 0.24s; }
+        .delay-3 { animation-delay: 0.36s; }
+        .delay-4 { animation-delay: 0.48s; }
+        .delay-5 { animation-delay: 0.6s; }
+
+        .reveal {
+            opacity: 0; transform: translateY(48px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            background: linear-gradient(135deg, #34d399 0%, #14b8a6 100%);
+            color: #042f2e; font-weight: 700; font-size: 1rem;
+            padding: 1.05rem 2.1rem; border-radius: 18px; border: none; cursor: pointer;
+            text-decoration: none; position: relative; overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 28px rgba(52, 211, 153, 0.35), 0 0 0 1px rgba(52, 211, 153, 0.2);
+        }
+        .btn-primary::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.35) 50%, transparent 60%);
+            background-size: 250% 100%; animation: shimmer 3s infinite;
+        }
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 14px 40px rgba(52, 211, 153, 0.45);
+        }
+        .btn-ghost {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            background: rgba(255, 255, 255, 0.05); color: var(--text);
+            font-weight: 600; padding: 1.05rem 2.1rem; border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.14); text-decoration: none;
+            transition: all 0.3s ease; backdrop-filter: blur(12px);
+        }
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.28);
+            transform: translateY(-3px);
+        }
+
+        /* Nav */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 1.3rem 1.5rem; transition: all 0.4s ease;
+        }
+        nav.scrolled {
+            background: rgba(3, 5, 12, 0.82); backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06); padding: 0.85rem 1.5rem;
+        }
+        .nav-inner {
+            max-width: 1120px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo {
+            font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em;
+            color: white; text-decoration: none; display: flex; align-items: center; gap: 11px;
+        }
+        .logo-mark {
+            width: 38px; height: 38px;
+            background: linear-gradient(145deg, #34d399, #0d9488);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.85rem; color: #042f2e;
+            box-shadow: 0 4px 14px rgba(52, 211, 153, 0.35);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            padding: 8.5rem 1.5rem 5.5rem; position: relative;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.28);
+            color: #6ee7b7; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; padding: 0.55rem 1.15rem; border-radius: 999px; margin-bottom: 2rem;
+        }
+        .hero-badge .dot {
+            width: 7px; height: 7px; background: #34d399; border-radius: 50%;
+            animation: pulse-ring 2s infinite;
+        }
+        .hero h1 {
+            font-size: clamp(2.8rem, 7.5vw, 4.75rem); font-weight: 800;
+            line-height: 1.06; letter-spacing: -0.035em; margin-bottom: 1.5rem; max-width: 920px;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(120deg, #34d399 0%, #5eead4 40%, #a5f3fc 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-sub {
+            font-size: clamp(1.1rem, 2.3vw, 1.35rem); color: var(--muted);
+            max-width: 560px; margin-bottom: 2.75rem; font-weight: 500; line-height: 1.75;
+        }
+        .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3.75rem; }
+        .hero-stats {
+            display: flex; flex-wrap: wrap; gap: 2.5rem;
+        }
+        .stat-item { display: flex; flex-direction: column; gap: 2px; }
+        .stat-num { font-size: 1.5rem; font-weight: 800; color: var(--emerald); letter-spacing: -0.02em; }
+        .stat-label { font-size: 0.85rem; color: var(--muted); }
+
+        /* Sections */
+        section { padding: 6.5rem 1.5rem; position: relative; }
+        .section-inner { max-width: 1120px; margin: 0 auto; }
+        .section-label {
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--emerald); margin-bottom: 1rem;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .section-label::before {
+            content: ''; width: 18px; height: 2px; background: var(--emerald); border-radius: 2px;
+        }
+        .section-title {
+            font-size: clamp(2.1rem, 4.8vw, 2.9rem); font-weight: 800;
+            letter-spacing: -0.025em; line-height: 1.12; margin-bottom: 1.2rem;
+        }
+        .section-sub { font-size: 1.1rem; color: var(--muted); max-width: 520px; line-height: 1.75; }
+
+        /* Pain cards */
+        .pain-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 1.5rem; margin-top: 3.75rem;
+        }
+        .pain-card { padding: 2.15rem; }
+        .pain-icon {
+            width: 52px; height: 52px; border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; margin-bottom: 1.35rem;
+            background: linear-gradient(145deg, rgba(52, 211, 153, 0.12), rgba(255,255,255,0.04));
+            border: 1px solid rgba(52, 211, 153, 0.15);
+        }
+        .pain-card h3 {
+            font-size: 1.2rem; font-weight: 700; margin-bottom: 0.7rem; letter-spacing: -0.015em;
+        }
+        .pain-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+
+        /* Facility */
+        .facility {
+            background: linear-gradient(180deg, transparent, rgba(52, 211, 153, 0.025), transparent);
+        }
+        .facility-grid {
+            display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem;
+            align-items: center; margin-top: 3.25rem;
+        }
+        @media (max-width: 860px) { .facility-grid { grid-template-columns: 1fr; } }
+        .facility-list { list-style: none; margin-top: 2.15rem; display: flex; flex-direction: column; gap: 1.15rem; }
+        .facility-list li {
+            display: flex; align-items: flex-start; gap: 14px;
+            font-size: 1.05rem; color: #e2e8f0;
+        }
+        .facility-list .check {
+            width: 26px; height: 26px; min-width: 26px;
+            background: rgba(52, 211, 153, 0.14); border-radius: 9px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--emerald); font-size: 0.85rem; margin-top: 1px;
+            border: 1px solid rgba(52, 211, 153, 0.2);
+        }
+        .trial-card {
+            padding: 2.75rem 2.25rem; text-align: center; position: relative; overflow: hidden;
+        }
+        .trial-card::before {
+            content: ''; position: absolute; top: -40%; left: -40%; width: 180%; height: 180%;
+            background: radial-gradient(circle, rgba(52, 211, 153, 0.1) 0%, transparent 55%);
+            animation: orb-drift 10s ease-in-out infinite alternate;
+        }
+        .trial-days {
+            font-size: 5rem; font-weight: 800; line-height: 1; margin-bottom: 0.4rem; position: relative;
+            background: linear-gradient(135deg, #34d399, #5eead4, #a5f3fc);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .trial-card h3 { font-size: 1.55rem; font-weight: 700; margin-bottom: 1rem; position: relative; }
+        .trial-card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.85rem; position: relative; line-height: 1.7; }
+        .location-pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(0, 0, 0, 0.35); border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.3rem; border-radius: 14px; font-size: 0.88rem; color: #cbd5e1; position: relative;
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 1.15rem; margin-top: 4rem;
+        }
+        @media (max-width: 750px) { .gallery { grid-template-columns: 1fr; } }
+        .gallery-item {
+            border-radius: 22px; overflow: hidden; position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            aspect-ratio: 4/3;
+        }
+        .gallery-item:first-child { grid-row: span 2; aspect-ratio: auto; min-height: 100%; }
+        @media (max-width: 750px) { .gallery-item:first-child { grid-row: auto; aspect-ratio: 4/3; } }
+        .gallery-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .gallery-item:hover img { transform: scale(1.07); }
+        .gallery-item::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(3,5,12,0.55) 0%, transparent 45%);
+            pointer-events: none;
+        }
+        .gallery-caption {
+            position: absolute; bottom: 1rem; left: 1.15rem; right: 1.15rem;
+            font-size: 0.82rem; font-weight: 600; color: white; z-index: 2;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.75rem;
+            margin-top: 3.75rem; max-width: 820px; margin-left: auto; margin-right: auto;
+        }
+        @media (max-width: 650px) { .pricing-grid { grid-template-columns: 1fr; } }
+        .price-card {
+            padding: 2.4rem; display: flex; flex-direction: column; position: relative;
+        }
+        .price-card.featured {
+            border-color: rgba(52, 211, 153, 0.4);
+            box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.18), 0 25px 60px rgba(0, 0, 0, 0.35), 0 0 40px rgba(52, 211, 153, 0.08);
+            background: linear-gradient(160deg, rgba(52, 211, 153, 0.08), rgba(255,255,255,0.04));
+        }
+        .price-card.featured::before {
+            content: 'Most Teams Choose This';
+            position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(135deg, #34d399, #0d9488);
+            color: #042f2e; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.05em;
+            text-transform: uppercase; padding: 0.4rem 1.1rem; border-radius: 999px; white-space: nowrap;
+            box-shadow: 0 4px 14px rgba(52, 211, 153, 0.35);
+        }
+        .price-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.45rem; }
+        .price-card .desc { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.6rem; line-height: 1.55; }
+        .price-amount {
+            font-size: 2.9rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.3rem;
+        }
+        .price-amount span { font-size: 0.95rem; font-weight: 600; color: var(--muted); }
+        .price-note {
+            font-size: 0.8rem; color: var(--emerald); font-weight: 600; margin-bottom: 1.85rem;
+            display: inline-block; background: rgba(52, 211, 153, 0.1);
+            padding: 0.4rem 0.85rem; border-radius: 10px; border: 1px solid rgba(52, 211, 153, 0.15);
+        }
+        .price-card .btn-primary, .price-card .btn-ghost { margin-top: auto; width: 100%; }
+
+        /* Final CTA */
+        .final-cta { text-align: center; padding: 7.5rem 1.5rem; }
+        .final-cta h2 {
+            font-size: clamp(2.3rem, 5.2vw, 3.4rem); font-weight: 800;
+            letter-spacing: -0.03em; line-height: 1.12; margin-bottom: 1.3rem;
+            max-width: 720px; margin-left: auto; margin-right: auto;
+        }
+        .final-cta p {
+            font-size: 1.15rem; color: var(--muted); max-width: 500px;
+            margin: 0 auto 2.75rem; line-height: 1.75;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 3.25rem 1.5rem; text-align: center;
+        }
+        footer p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; }
+        footer a { color: var(--emerald); text-decoration: none; font-weight: 600; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="bg-mesh"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="particles" id="particles"></div>
+    <div class="grain"></div>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="logo">
+                <div class="logo-mark">SS</div>
+                ScrumSpace CoWorks
+            </a>
+            <a href="https://wa.me/919633973970?text=Hi%20Aju%2C%20I%27d%20like%20to%20activate%20the%201-Week%20Free%20Trial%20at%20ScrumSpace%20CoWorks" class="btn-primary" style="padding: 0.7rem 1.35rem; font-size: 0.88rem;">
+                Book Free Trial
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="section-inner">
+            <div class="hero-badge animate-fade-up">
+                <span class="dot"></span>
+                Arikkadamukku · Trivandrum · Limited Seats
+            </div>
+            
+            <h1 class="animate-fade-up delay-1">
+                Your team deserves<br>
+                <span class="highlight">uninterrupted focus.</span>
+            </h1>
+            
+            <p class="hero-sub animate-fade-up delay-2">
+                Power cuts, dead Wi-Fi, and rising bills are silently draining your best hours. 
+                We built a quiet, fully powered floor so you can stop managing the office — and start shipping again.
+            </p>
+            
+            <div class="hero-cta animate-fade-up delay-3">
+                <a href="https://wa.me/919633973970?text=Hi%20Aju%2C%20I%27d%20like%20to%20activate%20the%201-Week%20Free%20Trial%20at%20ScrumSpace%20CoWorks" class="btn-primary">
+                    Activate 1-Week Free Trial
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#pricing" class="btn-ghost">See Transparent Pricing</a>
+            </div>
+            
+            <div class="hero-stats animate-fade-up delay-4">
+                <div class="stat-item">
+                    <span class="stat-num">40</span>
+                    <span class="stat-label">quiet seats · one floor</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">24/7</span>
+                    <span class="stat-label">generator backup</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">₹0</span>
+                    <span class="stat-label">utility bills for you</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">6</span>
+                    <span class="stat-label">days open · Mon–Sat</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Pain -->
+    <section>
+        <div class="section-inner">
+            <div class="reveal">
+                <p class="section-label">We felt this too</p>
+                <h2 class="section-title">Work is already hard enough.<br>Your workspace shouldn’t fight you.</h2>
+                <p class="section-sub">
+                    Every founder in South Trivandrum knows the quiet panic of a blackout mid-deploy, 
+                    or the slow death of focus when the AC dies and the bills pile up. We lived it. Then we ended it.
+                </p>
+            </div>
+
+            <div class="pain-grid">
+                <div class="glass pain-card reveal">
+                    <div class="pain-icon">⚡</div>
+                    <h3>Deadlines don’t wait for KSEB</h3>
+                    <p>One power cut at the wrong moment can erase an entire afternoon of momentum. Client calls drop. Deployments stall. Stress spikes.</p>
+                </div>
+                <div class="glass pain-card reveal">
+                    <div class="pain-icon">💸</div>
+                    <h3>The invisible tax of an office</h3>
+                    <p>Electricity. Broadband. Cleaning. Generator diesel. Maintenance. These costs never appear on a pitch deck — yet they quietly eat your runway.</p>
+                </div>
+                <div class="glass pain-card reveal">
+                    <div class="pain-icon">🧠</div>
+                    <h3>Isolation slowly kills drive</h3>
+                    <p>Working alone in a dim room or noisy café drains the creative edge that made you start this. Proximity to other builders quietly raises the bar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facility -->
+    <section class="facility">
+        <div class="section-inner">
+            <div class="facility-grid">
+                <div class="reveal">
+                    <p class="section-label">The space we needed</p>
+                    <h2 class="section-title">40 seats.<br>One calm floor.<br>Continuous momentum.</h2>
+                    <p class="section-sub" style="margin-bottom: 0;">
+                        No maze of private cabins. No loud event spaces. Just a wide, beautifully air-conditioned open floor designed for deep, heads-down work.
+                    </p>
+                    
+                    <ul class="facility-list">
+                        <li>
+                            <span class="check">✓</span>
+                            <span><strong>Instant generator backup</strong> — your flow never drops when the grid does</span>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <span><strong>Enterprise-grade Wi-Fi</strong> — steady video calls, heavy uploads, zero drama</span>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <span><strong>Biometric entry & security</strong> — your machines stay exactly where you left them</span>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <span><strong>Open Mon–Sat</strong> — Sunday holiday · weekly 6 working days</span>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <span><strong>Virtual Space Booking</strong> — book your desk online, work when you arrive</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-strong trial-card reveal">
+                    <div class="trial-days">7</div>
+                    <h3>Full Days. Completely On Us.</h3>
+                    <p>
+                        Bring your entire squad. Test the chairs. Push the internet. 
+                        Feel the difference of working without a single utility worry. 
+                        Open Mon–Sat (Sunday holiday). Virtual Space Booking also available. 
+                        If it doesn’t feel right by the end, you owe us nothing.
+                    </p>
+                    <div class="location-pill">
+                        📍 600 m from Trivandrum South Railway Station (Nemom)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery -->
+            <div class="gallery reveal">
+                <div class="gallery-item">
+                    <img src="interior-1.webp" alt="Bright open floor with rows of white desks and large windows">
+                    <span class="gallery-caption">Open floor · natural light · heads-down focus</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="interior-3.webp" alt="Calm shared workspace with ergonomic seating">
+                    <span class="gallery-caption">40 seats · one quiet floor</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="building-exterior.webp" alt="AJUED Solutions LLP building — home of ScrumSpace CoWorks">
+                    <span class="gallery-caption">Arikkadamukku · near Nemom Station</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+        <div class="section-inner" style="text-align: center;">
+            <div class="reveal">
+                <p class="section-label">Simple & clear</p>
+                <h2 class="section-title">One rate. No surprises.<br>Almost no paperwork.</h2>
+                <p class="section-sub" style="margin: 0 auto;">
+                    After your free week, choose the plan that fits. 
+                    Everything — power, internet, cleaning, security — is already included.
+                    Only a 1-month rental advance + ₹700 registration.
+                </p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="glass price-card reveal">
+                    <h3>Dedicated Single Desk</h3>
+                    <p class="desc">For independent developers, designers, and consultants who need a reliable home base.</p>
+                    <div class="price-amount">₹3,000 <span>+ GST / month</span></div>
+                    <div class="price-note">1-month advance · ₹700 registration only</div>
+                    <a href="https://wa.me/919633973970?text=Hi%20Aju%2C%20I%27m%20interested%20in%20a%20Single%20Desk%20at%20ScrumSpace%20CoWorks.%20Can%20I%20start%20the%201-Week%20Free%20Trial%3F" class="btn-ghost">
+                        Start Free Trial
+                    </a>
+                </div>
+
+                <div class="glass price-card featured reveal">
+                    <h3>Team Block (5+ seats)</h3>
+                    <p class="desc">For small squads who want to work side-by-side without the cost of a private office.</p>
+                    <div class="price-amount">₹2,250 <span>+ GST / seat / month</span></div>
+                    <div class="price-note">1-month advance · ₹700 registration only</div>
+                    <a href="https://wa.me/919633973970?text=Hi%20Aju%2C%20our%20team%20of%205%2B%20is%20interested%20in%20the%20bulk%20rate%20at%20ScrumSpace%20CoWorks.%20We%27d%20like%20to%20book%20the%201-Week%20Free%20Trial." class="btn-primary">
+                        Reserve Team Trial
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="section-inner reveal">
+            <h2>
+                You already carry enough weight.<br>
+                <span class="font-serif" style="font-style: italic; color: #6ee7b7;">Let the space carry some of it.</span>
+            </h2>
+            <p>
+                Come work here for seven days. Feel what it’s like when the power never fails, 
+                the internet never drops, and the only thing you have to manage is your own craft.
+            </p>
+            <a href="https://wa.me/919633973970?text=Hi%20Aju%2C%20I%27d%20like%20to%20activate%20the%201-Week%20Free%20Trial%20at%20ScrumSpace%20CoWorks%20starting%20this%20Monday." class="btn-primary" style="font-size: 1.1rem; padding: 1.2rem 2.4rem;">
+                Claim Your Free Week →
+            </a>
+            <p style="margin-top: 1.85rem; font-size: 0.9rem; color: #64748b;">
+                No credit card. No commitment. Just seven days of uninterrupted focus.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            ScrumSpace CoWorks · An <a href="https://www.ajuedsolutions.com" target="_blank" rel="noopener">AJUED Solutions LLP</a> initiative<br>
+            Arikkadamukku, near Nemom Station · Trivandrum · Open Mon–Sat<br><br>
+            <a href="https://www.ajuedsolutions.com/scrumspacecoworks" target="_blank" rel="noopener">ajuedsolutions.com/scrumspacecoworks</a>
+        </p>
+    </footer>
+
+    <script>
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 32; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.animationDuration = (14 + Math.random() * 16) + 's';
+            p.style.animationDelay = (Math.random() * 12) + 's';
+            p.style.width = p.style.height = (1 + Math.random() * 2.5) + 'px';
+            particlesContainer.appendChild(p);
+        }
+
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
